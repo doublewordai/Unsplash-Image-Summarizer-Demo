@@ -1,0 +1,4 @@
+venv
+.env
+unsplash-research-dataset-lite-latest
+unsplash_summaries.csv
