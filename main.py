@@ -47,14 +47,28 @@ async def summarize_photos():
     async def summarize(url: str, description: str, photographer: str) -> str:
         prompt = (
             "Summarize this image for a social media-style post.\n\n"
-            f"Image: {url}\n"
             f"Caption: {description}\n\n"
             f"Photographer: {photographer}\n\n"
             "Write a concise summary ignoring any irrelevant metadata."
         )
         response = await client.chat.completions.create(
             model="Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",
-            messages=[{"role": "user", "content": prompt}],
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": prompt
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": url
+                            }
+                        }
+                ]},
+            ],
         )
         return response.choices[0].message.content
 
