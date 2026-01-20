@@ -26,7 +26,7 @@ DESCRIPTION_COLUMN = "photo_description"
 PHOTOGRAPHER_COLUMN = "photographer_username"
 OUTPUT_CSV = "unsplash_summaries_1000.csv"
 
-NUM_IMAGES = 100
+NUM_IMAGES = 1000
 TARGET_WIDTH = 1280  # Set your desired width
 TARGET_HEIGHT = 720  # Set your desired height
 
@@ -143,7 +143,7 @@ async def summarize_photos():
                 image_url_payload = {"url": f"data:image/jpeg;base64,{image}"}
 
             response = await client.chat.completions.create(
-                model="Qwen/Qwen3-VL-30B-A3B-Instruct-FP8-PI-image-test",
+                model="Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",
                 messages=[
                     {
                         "role": "user",
