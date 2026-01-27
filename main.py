@@ -15,9 +15,9 @@ import aiohttp
 
 # Load API key from .env
 load_dotenv()
-API_KEY = os.getenv("OPENAI_API_KEY")
+API_KEY = os.getenv("DW_API_KEY")
 if not API_KEY:
-    raise RuntimeError("OPENAI_API_KEY not set in .env")
+    raise RuntimeError("DW_API_KEY not set in .env")
 
 # Configurations
 CSV_PATH = "unsplash-research-dataset-lite-latest/photos.csv000"
@@ -53,9 +53,6 @@ async def summarize_photos():
         on_bad_lines='skip'  # skip rows that don't match the columns
     )
 
-    # Debug: print column names
-    print(df.columns.tolist())
-
     # Keep only rows with valid URLs
     df = df[df[PHOTO_URL_COLUMN].notna()]
 
@@ -85,11 +82,13 @@ async def summarize_photos():
                     img_bytes = await resp.read()
                 with open(cache_filename, "wb") as f:
                     f.write(img_bytes)
+                    
             try:
                 img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
             except Exception as img_exc:
                 print(f"Error opening image {url}: {img_exc}")
                 return None
+
             # Crop to target aspect ratio (center crop)
             orig_width, orig_height = img.size
             target_aspect = target_width / target_height

@@ -1,6 +1,8 @@
 # Unsplash Image Summarizer Demo
 
-This demo project shows how to summarize Unsplash images using an LLM with **Autobatcher**. Each image’s metadata is converted into a social media–style summary.
+This demo project shows how to do Image Processing with Doubleword’s inference API, by summarizing Unsplash images. Each image’s metadata is converted into a social media–style summary.
+
+As of January 27th 2026, the cost of summarising 1000 720p images with the Qwen-30B model on [Doubleword's inference platform](https://app.doubleword.ai) is $0.05.
 
 ---
 
