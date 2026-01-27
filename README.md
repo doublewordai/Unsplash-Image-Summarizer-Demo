@@ -29,8 +29,8 @@ As of January 27th 2026, the cost of summarising 1000 720p images with the Qwen-
 ### 1. Clone the repo
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo-folder>
+git clone https://github.com/doublewordai/Unsplash-Image-Summarizer-Demo.git
+cd Unsplash-Image-Summarizer-Demo
 ```
 
 ---
